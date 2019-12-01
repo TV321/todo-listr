@@ -14,11 +14,11 @@ class TodoItem extends Component {
 
 
     render() {
-        const { id, title } = this.props.todo;
+        const { id, title, completed } = this.props.todo;
         return (
             <div style={ this.getStyle() }>
                 <p>
-                    <input type="checkbox" onChange=
+                    <input type="checkbox" checked= { completed } onChange=
                         { this.props.markComplete.bind(this, id) }/> { ' ' }
                     { title }
                     <button onClick=
@@ -33,7 +33,9 @@ class TodoItem extends Component {
 
 // PropTypes
 TodoItem.propTypes = {
-    todo : PropTypes.object.isRequired
+    todo : PropTypes.object.isRequired,
+    markComplete: PropTypes.func.isRequired,
+    delTodo: PropTypes.func.isRequired,
 }
 
 const btnStyle = {
